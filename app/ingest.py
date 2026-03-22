@@ -4,6 +4,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Qdrant
 from qdrant_client import QdrantClient
+from langchain.memory import ConversationBufferMemory
 
 # 1. Setup paths and Config
 DATA_PATH = "../knowledge_base"

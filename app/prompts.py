@@ -1,4 +1,4 @@
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 template = """
 You are the FlowDesk AI Support Agent. Use the following pieces of retrieved context to answer the user's question. 
