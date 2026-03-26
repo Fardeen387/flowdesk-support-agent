@@ -9,4 +9,4 @@ langchain-chroma
 chromadb
 sentence-transformers
 python-dotenv
-google-generativeai
+google-generativeaia
