@@ -1,12 +1,9 @@
 import os
 from pathlib import Path
-
 from langchain_classic.chains import ConversationalRetrievalChain
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_community.vectorstores import Qdrant
+from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
-
-from qdrant_client import QdrantClient
 from prompts import QA_PROMPT
 
 from langchain_classic.memory import ConversationBufferMemory
@@ -25,11 +22,12 @@ print(f"API key found: {bool(api_key)}")
 def get_qa_chain():
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
-    client = QdrantClient(url="http://localhost:6333")
-    vector_store = Qdrant(
-        client=client, 
+    chroma_path = Path(__file__).resolve().parent.parent / "chroma_db"
+
+    vector_store = Chroma(
+        persist_directory=str(chroma_path), 
+        embedding_function=embeddings,
         collection_name="flowdesk_docs", 
-        embeddings=embeddings
     )
     
     llm = ChatGoogleGenerativeAI(

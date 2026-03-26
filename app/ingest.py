@@ -2,11 +2,11 @@ import os
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Qdrant
-from qdrant_client import QdrantClient
+from langchain_community.vectorstores import Chroma
 
 # 1. Setup paths and Config
 DATA_PATH = "../knowledge_base"
+CHROMA_PATH = "../chroma_db"
 COLLECTION_NAME = "flowdesk_docs"
 
 # 2. Initialize Embeddings 
@@ -26,17 +26,13 @@ def run_ingestion():
     )
     texts = text_splitter.split_documents(documents)
     print(f"Split into {len(texts)} chunks.")
-
-    # --- STEP 3: Vectorize and Upload to Qdrant ---
-    url = "http://localhost:6333"
     
     # Initialize the vector store
-    vectorstore = Qdrant.from_documents(
+    vectorstore = Chroma.from_documents(
         documents=texts,
         embedding=embeddings,
-        url=url,
-        collection_name=COLLECTION_NAME,
-        force_recreate=True  
+        persist_directory=CHROMA_PATH,
+        collection_name=COLLECTION_NAME
     )
     
     print("Successfully ingested documents into Qdrant!")
