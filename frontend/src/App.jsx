@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Send, Bot, Sparkles, FileText, AlertCircle, X } from "lucide-react";
 
-const BACKEND_URL = "http://localhost:8000/chat";
+const BACKEND_URL = "https://Fardeen1004-flowdesk-support-agent.hf.space/chat";
 
 function TypingDots() {
   return (
