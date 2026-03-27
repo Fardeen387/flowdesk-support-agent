@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Send, Bot, Sparkles, FileText, AlertCircle, X } from "lucide-react";
+import ReactMarkdown from 'react-markdown'
 
 const BACKEND_URL = "https://Fardeen1004-flowdesk-support-agent.hf.space/chat";
 
@@ -45,7 +46,7 @@ function AiBubble({ text, sources }) {
       </div>
       <div className="max-w-[72%]">
         <div className="bg-white border border-slate-100 px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm text-sm text-slate-700 leading-relaxed">
-          {text}
+          <ReactMarkdown>{text}</ReactMarkdown>
         </div>
         {sources && sources.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-2 pl-1">
