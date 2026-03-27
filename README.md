@@ -195,4 +195,4 @@ Connected to GitHub repo with root directory set to `frontend/`. Auto-deploys on
 ## Built By
 
 **Fardeen** — B.Tech CSE, Bansal Institute of Science and Technology  
-[GitHub](https://github.com/Fardeen387) · [LinkedIn](https://linkedin.com/in/fardeen)
+[GitHub](https://github.com/Fardeen387) · [LinkedIn](https://www.linkedin.com/in/fardeen-khan-b778b1276/)
